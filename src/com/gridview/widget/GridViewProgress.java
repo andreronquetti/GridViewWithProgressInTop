@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.GridView;
@@ -22,14 +20,15 @@ public class GridViewProgress extends GridView {
 		if (ev.getAction() == MotionEvent.ACTION_UP) {
 			if (getFirstVisiblePosition() == 0) {
 				getHitRect(screen);
-				
+
 				View progress = getChildAt(0);
-				Rect rect = new Rect(progress.getLeft(), progress.getTop(), progress.getRight(), progress.getBottom());
-				
+				Rect rect = new Rect(progress.getLeft(), progress.getTop(),
+						progress.getRight(), progress.getBottom());
+
 				boolean contains = screen.contains(rect);
-				
+
 				if (contains) {
-					// CALL YOUR FUNCTION
+					Log.d("GridViewProgress", "Carregando....");
 				}
 			}
 		}
@@ -43,5 +42,6 @@ public class GridViewProgress extends GridView {
 		if (screen == null) {
 			screen = new Rect(l, t, r, b);
 		}
-	};
+	}
+
 }
